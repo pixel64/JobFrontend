@@ -1,0 +1,10 @@
+<div class="px-5 py-5 px-5 text-center">
+  <ul class="list-group">
+    <li [class]="getListItemClass(item.status)" *ngFor="let item of list" routerLink="/job/{{item.name}}">{{item.name}}
+    </li>
+  </ul>
+</div>
+
+<div class="px-5">
+  <button type="button" class="btn btn-primary" routerLink="/job/">New Job</button>
+</div>

@@ -1,0 +1,45 @@
+<div class="px-5 py-5">
+  <a routerLink="/">Zurück</a>
+  <div *ngIf="process">
+    <div class="form-group">
+      <label for="process-name">Name</label>
+      <input [disabled]="!this.newProcess" type="text" class="form-control" id="process-name" placeholder="Job name" [(ngModel)]="process.name">
+    </div>
+
+    <div class="form-group">
+      <label for="process-command">Command</label>
+      <input type="text" class="form-control" id="process-command" placeholder="Command" [(ngModel)]="process.command">
+    </div>
+
+    <div class="form-group">
+      <label for="process-cron">Cron String</label>
+      <input type="text" class="form-control" id="process-cron" placeholder="Cron String" [(ngModel)]="process.cronString">
+    </div>
+    <div class="py-5">
+
+    <button [disabled]="newProcess" type="button" class="btn btn-danger me-2" *ngIf="process.status == 'ACTIVE'" (click)="stopProcess()">Stop</button>
+    <button type="button" class="btn btn-success me-2" *ngIf="process.status == 'STOPPED'" (click)="startProcess()">Start</button>
+    <button [disabled]="process.status === 'ACTIVE'"type="button" class="btn btn-primary me-2" (click)="saveProcess()">Speichern</button>
+    <button [disabled]="disabled()" type="button" class="btn btn-primary me-2" (click)="deleteProcess()">Löschen</button>
+    <button type="button" class="btn btn-primary me-2" [disabled]="loading || newProcess" (click)="runProcess()">Run</button>
+      </div>
+  </div>
+</div>
+<div [hidden]="!hidden" class="px-5">
+  <ul class="list-group">
+    <div *ngFor="let log of logs">
+      <li class="list-group-item" (click)="open(log.log)">{{log.exitCode}} | {{log.startDateTime}} | <span *ngIf="log.endDateTime">{{log.endDateTime}}</span></li>
+    </div>
+  </ul>
+</div>
+
+<div [hidden]="hidden" class="px-5">
+  <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+  <p>{{this.logText}}</p>
+</div>
+
+
+
+
+
+
