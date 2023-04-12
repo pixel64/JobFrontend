@@ -1,6 +1,7 @@
 build-job:
   stage: build
   script:
+    - npm install
     - npm run build
 
 test-job1:
