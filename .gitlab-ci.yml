@@ -12,6 +12,6 @@ run-tests:
 deploy-prod:
   stage: deploy
   script:
-    - ssh pixel@jobs.server.de '/home/pixel/test_dump/*'
-    - sftp pixel@jobs.server.de:/home/pixel/test_dump <<< $'put dist/*'
+    - ssh pixel@192.168.178.10 'rm -r /home/pixel/test_dump/*'
+    - sftp pixel@192.168.178.10:/home/pixel/test_dump <<< $'put dist/*'
   environment: production
