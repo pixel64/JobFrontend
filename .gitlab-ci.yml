@@ -3,5 +3,4 @@ build-job:
   script:
     - npm install
     - npm run build
-    - ssh pixel@192.168.178.10 'rm -r /home/pixel/test_dump/*'
     - rsync -a dist/* pixel@192.168.178.10:/home/pixel/test_dump
