@@ -3,4 +3,4 @@ build-job:
   script:
     - npm install
     - npm run build
-    - rsync -a dist/* pixel@192.168.178.10:/home/pixel/test_dump
+    - rsync -a --delete dist/jobs/* pixel@192.168.178.10:/home/pixel/var/www/html
