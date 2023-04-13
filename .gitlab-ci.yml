@@ -3,16 +3,5 @@ build-job:
   script:
     - npm install
     - npm run build
-    - ls
-    - pwd
-    - echo "build finished"
-
-deploy-prod:
-  stage: deploy
-  script:
-    - echo "deploy started"
-    - pwd
-    - ls
     - ssh pixel@192.168.178.10 'rm -r /home/pixel/test_dump/*'
     - sftp pixel@192.168.178.10:/home/pixel/test_dump <<< $'put dist/*'
-  environment: production
