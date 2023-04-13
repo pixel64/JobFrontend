@@ -9,7 +9,7 @@ import {Process} from "./api/Process";
 export class HttpJobsService {
 
   //readonly  myUrl = 'http://localhost:8080/';
-  readonly  myUrl = 'http://server.fritz.box:8080/';
+  readonly  myUrl = 'http://api.server.de/';
 
   constructor(private client: HttpClient) { }
 
